@@ -17,12 +17,10 @@ spring:
           enabled: true
       routes:
         - id: producer-service
-          uri: lb://listener-service
+          uri: lb://producer-service
           predicates:
-            - Path=/login/**
+            - Path=/producer/**
         - id: listener-service
           uri: lb://listener-service
           predicates:
-            - Path=/auth/**
-          filters:
-            - StripPrefix=1  
+            - Path=/auth/**, /login/**
