@@ -24,3 +24,5 @@ spring:
           uri: lb://listener-service
           predicates:
             - Path=/auth/**
+          filters:
+            - StripPrefix=1  
