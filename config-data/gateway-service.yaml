@@ -23,7 +23,6 @@ spring:
         - id: listener-service
           uri: lb://listener-service
           predicates:
-            - Path=/auth/**
-            - Path=/login/
+            - Path=/auth/** , /login/**
           filters:
             - StripPrefix=1  
