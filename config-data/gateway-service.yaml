@@ -23,4 +23,4 @@ spring:
         - id: listener-service
           uri: lb://listener-service
           predicates:
-            - Path=/auth/**, /login/**
+            - Path=/login/**
