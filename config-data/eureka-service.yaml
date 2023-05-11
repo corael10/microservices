@@ -5,6 +5,7 @@ eureka:
     fetch-registry: false
     register-with-eureka: false
     service-url:
+      default: http://host.docker.internal:8761/eureka/
       default-zone: http://host.docker.internal:8761/eureka/
   instance:
     hostname: 192.168.100.12
