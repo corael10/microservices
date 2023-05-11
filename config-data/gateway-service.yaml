@@ -4,9 +4,11 @@ eureka:
   client:
     fetch-registry: true
     register-with-eureka: true
+    healthcheck:
+      enabled: true
     service-url:
       default: http://host.docker.internal:8761/eureka/
-      default-zone: http://192.168.100.12:8761/eureka 
+      default-zone: http://host.docker.internal:8761/eureka/
     instance:
       hostname: 192.168.100.12
       nonSecurePortEnabled: false
