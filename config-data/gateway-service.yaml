@@ -1,14 +1,13 @@
 server:
-  port: 8081
+  port: 8080
 eureka:
   client:
     fetch-registry: true
     register-with-eureka: true
-    prefer-ip-address: true
     service-url:
-      default-zone: eureka:8761/eureka
+      default-zone: host.docker.internal:8761/eureka
     instance:
-      hostname: eureka
+      hostname: localhost
 
 spring:
   cloud:
