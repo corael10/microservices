@@ -7,10 +7,10 @@ eureka:
     healthcheck:
       enabled: false
     service-url:
-      default: http://host.docker.internal:8761/eureka/
-      default-zone: http://host.docker.internal:8761/eureka/
+      default: http://eureka-server:8761/eureka/
+      default-zone: http://eureka-server:8761/eureka/
     instance:
-      hostname: 192.168.100.12
+      hostname: eureka-server
       nonSecurePortEnabled: false
       securePortEnabled: true
       securePort: 8765
