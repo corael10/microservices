@@ -9,3 +9,4 @@ eureka:
       default-zone: http://host.docker.internal:8761/eureka/
   instance:
     hostname: 192.168.100.12
+    prefer-ip-address: true
