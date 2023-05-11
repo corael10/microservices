@@ -1,3 +1,5 @@
+server:
+  port: 8761
 eureka:
   client:
     fetch-registry: false
@@ -5,8 +7,4 @@ eureka:
     service-url:
       default-zone: http://192.168.100.12:8761/eureka/
   instance:
-    secure-port-enabled: true
-    non-secure-port-enabled: false
-server:
-    port: 8761
-    
+    hostname: eurekaserver
