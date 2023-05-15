@@ -6,12 +6,11 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://localhost:8761/eureka 
+      defaultZone: http://host.docker.internal:8761/eureka 
     instance:
-      hostname: localhost      
+      hostname: eureka-server      
 
-spring:
-  application.name: backend-gateway-client
+spring:  
   cloud:
     gateway:
       routes:
