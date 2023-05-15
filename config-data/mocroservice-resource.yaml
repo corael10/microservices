@@ -1,0 +1,25 @@
+server:
+  port: ${PORT:${SERVER_PORT:0}}
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zone: http://localhost:8761/eureka
+    instance:
+      instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}      
+
+spring:  
+  # the current backend is configured to be used as a resource server
+  # then, I must indicate the URI of the backend-auth to be used and which token to be used
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://192.168.100.12:8080/auth/realms/myRealm/protocol/openid-connect/certs #<---------- Specifying the Authorization Server JWK Set Uri Directly
+          
+logging:
+    level:
+        org:
+            springframework:
+                security: DEBUG       
