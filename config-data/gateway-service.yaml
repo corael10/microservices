@@ -1,28 +1,38 @@
 server:
-  port: 8080
+  port: 8083  
+  
 eureka:
   client:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://eureka-server:8761/eureka/
+      defaultZone: http://eureka-server:8761/eureka 
     instance:
-      hostname: eureka-server
+      hostname: eureka-server      
 
 spring:
+  application.name: backend-gateway-client
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
       routes:
-        - id: producer-service
-          uri: lb://producer-service
+        - id: backend-resources          
+          uri: lb://backend-resources
           predicates:
-            - Path=/producer/**
-        - id: listener-service
-          uri: lb://listener-service
-          predicates:
-            - Path=/login/** , /auth/**
+            Path=/messages/**
           filters:
-            - StripPrefix=1  
+            TokenRelay=
+            
+  security:
+    oauth2:
+      client:
+        registration:
+           keycloak:
+            provider: my-keycloak-provider
+            client-id: spring-gateway-client
+            client-secret: mVGQDpvWkeOYrx3obNBjRkWzFIddoJlT
+            authorization-grant-type: authorization_code
+            redirect-uri: "http://192.168.100.12:8083/login/oauth2/code/keycloak" 
+            scope: openid        
+        provider:         
+          my-keycloak-provider:
+            issuer-uri: http://192.168.100.12:8080/auth/realms/myRealm
