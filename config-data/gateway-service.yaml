@@ -14,8 +14,8 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: backend-resources          
-          uri: lb://backend-resources
+        - id: microservice-resource          
+          uri: lb://microservice-resource
           predicates:
             Path=/messages/**
           filters:
